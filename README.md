@@ -1,3 +1,63 @@
-The algorithm continuously evaluates and scores open source software projects in supported package managers based on their impact and value to the OSS ecosystem.
+## @hoangcung1804npm/fuga-ipsa-sed
 
-Simple support tea in reguide template can increase for an open source software project with an increasing number of dependents
+A super simple & flexible & intuitive config module, support `yaml` & `toml`.
+
+### Install
+
+```bash
+$ npm i @hoangcung1804npm/fuga-ipsa-sed --save
+```
+
+### Usage
+
+```js
+const config = require('@hoangcung1804npm/fuga-ipsa-sed')(__dirname);
+```
+
+or:
+
+```js
+const config = require('@hoangcung1804npm/fuga-ipsa-sed')({
+  filename: 'test',
+  config_basedir: __dirname,
+  config_dir: 'config'
+});
+```
+
+### Options
+
+- filename: config file name, default: `default`, support: `['.js', '.json', '.node', '.yaml', '.yml', '.toml']`.
+- config_basedir: directory for begining bubbling find config directory.
+- config_dir: config directory name, default: `config`.
+- config: default config object that overwrite config file.
+
+### Priority
+
+environment option > custom option > default option
+
+For example:
+
+```bash
+$ NODE_ENV=production NODE_CONFIG='{"port":3000}' node app.js
+```
+
+loading order:
+
+`NODE_CONFIG='{"port":3000}'` > opt.config > production config file > default config file
+
+### Environment Variables
+
+- NODE_ENV -> filename
+- CONFIG_BASEDIR || NODE_CONFIG_BASEDIR -> config_dirname
+- CONFIG_DIR || NODE_CONFIG_DIR -> config_dir
+- CONFIG || NODE_CONFIG -> config
+
+### Test
+
+```bash
+$ npm test
+```
+
+### License
+
+MIT
